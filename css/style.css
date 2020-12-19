@@ -57,7 +57,12 @@ main {
   font-size: 16px;
   font-weight: 300;
   background-color: black;
-  border: 2px solid white;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.card:hover {
+  transform: scale(1.05);
+  border: 2px solid royalblue;
 }
 .card img {
   width: 100%;

@@ -6,6 +6,8 @@ var app = new Vue ({
   data: {
     // prendo il valore inserito dall'utente e lo utilizzerò come query per la chiamata server
     userQuery: "",
+    // salvo in un array a parte la ricerca appena effettuata
+    movies: [],
   },
   methods: {
     getAPI: function() {
@@ -19,17 +21,15 @@ var app = new Vue ({
           language: "it-IT"
         }
       })
-      .then (function(result) {
-        // restituisce tutta la risposta server
+      .then ((result) => {
         console.log(result);
-        // restituisce gli array di film
         console.log(result.data.results);
+        // riempio l'array utente con i risultati restituiti dal server
+        this.movies = result.data.results;
+        console.log("movies");
+        console.log(this.movies);
         // se non metto un numero per scegliere un array mi restituisce undefined
-        console.log(result.data.results[0].original_title);
-        console.log(result.data.results[0].original_language);
-        console.log(result.data.results[0].overview);
-        console.log(result.data.results[0].release_date);
-        console.log(result.data.results[0].popularity);
+        // console.log(result.data.results[0].original_title);
       })
     }
   }

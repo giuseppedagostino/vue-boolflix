@@ -25,14 +25,38 @@
           <button type="button" @click="getAPI">
             <i class="fas fa-search"></i>
           </button>
-          <input type="text" placeholder="Cerca" v-model="userQuery">
+          <input type="text" placeholder="Cerca" v-model="userQuery"  @keydown.enter="getAPI">
         </div>
       </header>
       <!-- /header -->
 
       <!-- main -->
       <main>
-        <div class="card">
+        <div class="card" v-for="(movie) in movies">
+          <img src="interstellar.jpg" alt="boh">
+          <div class="informations">
+            <p><span>Titolo:</span>
+              {{ movie.title }}
+            </p>
+            <p><span>Titolo originale:</span>
+              {{ movie.original_title }}
+            </p>
+            <p><span>Lingua:</span>
+              {{ movie.originale_language }}
+            </p>
+            <p><span>Voto:</span>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </p>
+            <p><span>Overview:</span>
+              {{ movie.overview }}
+            </p>
+          </div>
+        </div>
+        <!-- <div class="card">
           <img src="interstellar.jpg" alt="interstellar">
           <div class="informations">
             <p><span>Titolo:</span>Interstellar</p>
@@ -80,7 +104,7 @@
               <i class="far fa-star"></i>
             </p>
             <p><span>Overview:</span>Nell'anno 2089 due scienziati portano a compimento le ricerche di una vita scoprendo che alcuni artefatti, ritrovati in diversi punti della Terra e tutti risalenti a migliaia di anni prima, riportano la medesima immagine di creature giganti che indicano un determinato pianeta. Ricostruito quale sia il pianeta in questione e trovati i fondi da un miliardario morente, i due si imbarcano assieme a un equipaggio misto di scienziati e piloti verso quel pianeta per andare a scoprire quel che ritengono essere l'origine della vita sulla Terra. Lì troveranno i resti di una civiltà aliena assieme a ciò che l'ha quasi estinta.</p>
-          </div>
+          </div> -->
         </div>
       </main>
       <!-- /main -->
