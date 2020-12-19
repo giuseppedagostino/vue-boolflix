@@ -22,10 +22,10 @@
       <header>
         <h1>boolflix</h1>
         <div>
-          <button type="button">
+          <button type="button" @click="getAPI">
             <i class="fas fa-search"></i>
           </button>
-          <input type="text" placeholder="Cerca">
+          <input type="text" placeholder="Cerca" v-model="userQuery">
         </div>
       </header>
       <!-- /header -->
@@ -35,43 +35,43 @@
         <div class="card">
           <img src="interstellar.jpg" alt="interstellar">
           <div class="informations">
-            <p><span>Titolo:</span>ehbytfgbdrtb</p>
-            <p><span>Titolo originale:</span>ehbytfgbfdrtb</p>
-            <p><span>Lingua:</span>ehbytfgbdrtb</p>
+            <p><span>Titolo:</span>Interstellar</p>
+            <p><span>Titolo originale:</span>Interstellar</p>
+            <p><span>Lingua:</span>En</p>
             <p><span>Voto:</span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
+              <i class="fas fa-star"></i>
             </p>
-            <p><span>Overview:</span>ehbytfgbdrtb</p>
+            <p><span>Overview:</span>In seguito alla scoperta di un cunicolo spazio-temporale, un gruppo di esploratori si avventura in una eroica missione per tentare di superare i limiti della conquista spaziale e oltrepassare le distanze che fino a quel momento avevano reso impraticabili i viaggi interstellari. L'obiettivo è quello di trovare nuovi luoghi dove coltivare il granoturco, l'unica coltivazione rimasta dopo un drastico cambiamento climatico che ha colpito soprattutto l'agricoltura.</p>
           </div>
         </div>
 
         <div class="card">
           <img src="firstman.jfif" alt="firstman">
           <div class="informations">
-            <p><span>Titolo:</span>ehbytfgbdrtb</p>
-            <p><span>Titolo originale:</span>ehbytfgbdrtb</p>
-            <p><span>Lingua:</span>ehbytfgbdrtb</p>
+            <p><span>Titolo:</span>Il primo uomo</p>
+            <p><span>Titolo originale:</span>First Man</p>
+            <p><span>Lingua:</span>En</p>
             <p><span>Voto:</span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
               <i class="far fa-star"></i>
             </p>
-            <p><span>Overview:</span>ehbytfgbdrtb</p>
+            <p><span>Overview:</span>Un film che narra l'avvincente storia della missione della NASA per portare un uomo sul luna. Il film si concentra sulla figura di Neil Armstrong e sugli anni tra il 1961 e il 1969. Resoconto viscerale in prima persona, basato sul libro di James R. Hansen, il film esplorerà i sacrifici e il costo che avrà per Armstrong e per l'intera nazione, una delle missioni più pericolose della storia.</p>
           </div>
         </div>
 
         <div class="card">
           <img src="prometeus.jpg" alt="prometeus">
           <div class="informations">
-            <p><span>Titolo:</span>ehbytfgbdrtb</p>
-            <p><span>Titolo originale:</span>ehbytfgbdrtb</p>
-            <p><span>Lingua:</span>ehbytfgbdrtb</p>
+            <p><span>Titolo:</span>Prometeus</p>
+            <p><span>Titolo originale:</span>Prometeus</p>
+            <p><span>Lingua:</span>En</p>
             <p><span>Voto:</span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -79,7 +79,7 @@
               <i class="fas fa-star"></i>
               <i class="far fa-star"></i>
             </p>
-            <p><span>Overview:</span>ehbytfgbdrtb</p>
+            <p><span>Overview:</span>Nell'anno 2089 due scienziati portano a compimento le ricerche di una vita scoprendo che alcuni artefatti, ritrovati in diversi punti della Terra e tutti risalenti a migliaia di anni prima, riportano la medesima immagine di creature giganti che indicano un determinato pianeta. Ricostruito quale sia il pianeta in questione e trovati i fondi da un miliardario morente, i due si imbarcano assieme a un equipaggio misto di scienziati e piloti verso quel pianeta per andare a scoprire quel che ritengono essere l'origine della vita sulla Terra. Lì troveranno i resti di una civiltà aliena assieme a ciò che l'ha quasi estinta.</p>
           </div>
         </div>
       </main>

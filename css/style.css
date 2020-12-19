@@ -74,11 +74,19 @@ span {
   height: 100%;
   width: 100%;
   background-color: black;
-  transition: 0.2s;
+  transition: 0.6s;
   overflow-wrap: break-word;
   opacity: 0;
+  overflow-y: auto;
 }
 .informations:hover {
   cursor: pointer;
   opacity: 1;
+}
+main p {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+p i {
+  color: yellow;
 }
