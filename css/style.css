@@ -26,15 +26,29 @@ h1 {
   text-transform: capitalize;
   color: #E50914;
 }
-input, button {
+input {
+  margin-right: 10px;
   padding: 10px;
-}
-button:hover {
-  cursor: pointer;
-  transform: scale(1.1);
+  border-radius: 20px;
 }
 input:focus {
   width: 400px;
+  outline: none;
+  border-radius: 20px;
+  border: 4px solid #E50914;
+}
+button {
+  padding: 10px;
+  width: 60px;
+  background-color: #E50914;
+  border: 2px solid #E50914;
+  border-radius: 20px;
+}
+button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+button:focus {
   outline: none;
 }
 
@@ -62,7 +76,7 @@ main {
 }
 .card:hover {
   transform: scale(1.05);
-  border: 2px solid royalblue;
+  border: 2px solid #E50914;
 }
 .card img {
   width: 100%;
@@ -94,4 +108,30 @@ main p {
 }
 p i {
   color: yellow;
+}
+main ::-webkit-scrollbar {
+  width: 10px;
+}
+main ::-webkit-scrollbar-track {
+  background: #303030;
+}
+main ::-webkit-scrollbar-thumb {
+  background: #E50914;
+  border-radius: 5px;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: black;
+}
+::-webkit-scrollbar-thumb {
+  background: #E50914;
+  border-radius: 7.5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background: white;
 }

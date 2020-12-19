@@ -2,6 +2,7 @@
 <html lang="it" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js" integrity="sha512-bYkaBWaFtfPIMYt9+CX/4DWgfrjcHinjerNYxQmQx1VM76eUsPPKZa5zWV8KksVkBF/DaHSADCwil2J5Uq2ctA==" crossorigin="anonymous"></script>
     <!-- vue -->
@@ -22,10 +23,10 @@
       <header>
         <h1>boolflix</h1>
         <div>
+          <input type="text" placeholder="Cerca" v-model="userQuery"  @keydown.enter="getAPI">
           <button type="button" @click="getAPI">
             <i class="fas fa-search"></i>
           </button>
-          <input type="text" placeholder="Cerca" v-model="userQuery"  @keydown.enter="getAPI">
         </div>
       </header>
       <!-- /header -->
