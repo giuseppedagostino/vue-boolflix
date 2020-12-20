@@ -35,27 +35,51 @@
       <main>
         <div class="card" v-for="(movie) in movies">
           <img v-if="movie.poster_path != null" :src="imgPrefix + movie.poster_path" :alt="movie.title">
+          <!-- se non è presente la copertina, viene mostrata un'altra immagine tramite il v-if -->
           <img v-if="movie.poster_path == null" src="img/220x330.png" >
+
+          <!-- titolo -->
           <div class="informations">
-            <p><span>Titolo:</span>
-              {{ movie.title }}
-            </p>
-            <p><span>Titolo originale:</span>
-              {{ movie.original_title }}
-            </p>
-            <p><span>Lingua:</span>
-              {{ movie.originale_language }}
-            </p>
-            <p><span>Voto:</span>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </p>
-            <p><span>Overview:</span>
-              {{ movie.overview }}
-            </p>
+            <div class="p_container">
+              <p><span>Titolo:</span>
+                {{ movie.title }}
+              </p>
+            </div>
+
+            <!-- titolo originale -->
+            <!-- questo elemnto è visibile solo se il titolo è diverso da quello originale -->
+            <div v-if="movie.title != movie.original_title" class="p_container">
+              <p><span>Titolo originale:</span>
+                {{ movie.original_title }}
+              </p>
+            </div>
+
+            <!-- lingua -->
+            <div class="p_container">
+              <p><span>Lingua:</span>
+                {{ movie.original_language }}
+              </p>
+            </div>
+
+            <!-- voto -->
+            <div class="p_container">
+              <p><span>Voto:</span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </p>
+            </div>
+
+            <!-- trama -->
+            <div class="p_container">
+              <p><span v-if="movie.overview != ''">Trama:</span>
+                <p class="missing" v-if="movie.overview == ''">Purtroppo non è presente una descrizione in italiano per questo film.</p>
+                {{ movie.overview }}
+              </p>
+            </div>
+
           </div>
         </div>
 

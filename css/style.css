@@ -13,18 +13,14 @@ body {
 }
 /* scrollbar */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: black;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E50914;
-  border-radius: 7.5px;
-}
-::-webkit-scrollbar-thumb:hover {
-  cursor: pointer;
   background: white;
+  border-radius: 7.5px;
 }
 
 /* HEADER */
@@ -120,9 +116,12 @@ main h1 {
 .card img {
   width: 100%;
 }
+div.p_container {
+  margin-bottom: 7.5px;
+}
 span {
   margin-right: 10px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .informations {
   position: absolute;
@@ -142,7 +141,6 @@ span {
   opacity: 1;
 }
 main p {
-  margin-bottom: 5px;
   font-size: 14px;
 }
 p i {
@@ -150,7 +148,7 @@ p i {
 }
 /* scrollbar main */
 main ::-webkit-scrollbar {
-  width: 10px;
+  width: 7.5px;
 }
 main ::-webkit-scrollbar-track {
   background: #303030;
