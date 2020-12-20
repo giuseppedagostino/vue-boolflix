@@ -8,10 +8,12 @@ var app = new Vue ({
     userQuery: "",
     // salvo in un array a parte la ricerca appena effettuata
     movies: [],
+    // prefisso percorso immagini
+    imgPrefix: "https://image.tmdb.org/t/p/w220_and_h330_face/",
   },
   methods: {
+
     getAPI: function() {
-      // prova chiamata server
       axios
       .get("https://api.themoviedb.org/3/search/movie?", {
         params: {
@@ -29,6 +31,7 @@ var app = new Vue ({
         console.log("movies");
         console.log(this.movies);;
       })
-    }
+    },
+
   }
 });

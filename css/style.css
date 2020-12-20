@@ -81,6 +81,7 @@ button:focus {
 
 /* MAIN */
 main {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -88,6 +89,14 @@ main {
   min-height: calc(100vh - 80px);
   padding: 40px;
   background-color: #303030;
+}
+main h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  opacity: 0.75;
 }
 .card {
   position: relative;
@@ -99,6 +108,7 @@ main {
   font-weight: 300;
   background-color: black;
   border-radius: 20px;
+  box-shadow: 0 0 16px 4px rgba(0,0,0,0.6);
   overflow: hidden;
   transition: 0.6s;
 }

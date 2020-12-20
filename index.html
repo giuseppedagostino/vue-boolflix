@@ -34,7 +34,8 @@
       <!-- main -->
       <main>
         <div class="card" v-for="(movie) in movies">
-          <img :src="'https://image.tmdb.org/t/p/w220_and_h330_face/' + movie.poster_path" :alt="movie.title">
+          <img v-if="movie.poster_path != null" :src="imgPrefix + movie.poster_path" :alt="movie.title">
+          <img v-if="movie.poster_path == null" src="img/220x330.png" >
           <div class="informations">
             <p><span>Titolo:</span>
               {{ movie.title }}
@@ -57,6 +58,9 @@
             </p>
           </div>
         </div>
+
+        <!-- questo dovrebbe essere mostra quando l'array è vuoto ma manda in crash la pagina -->
+        <!-- <h1 v-if="movies = []">Effettua una ricerca</h1> -->
       </main>
       <!-- /main -->
     </div>
