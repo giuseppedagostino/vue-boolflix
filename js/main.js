@@ -27,9 +27,7 @@ var app = new Vue ({
         // riempio l'array utente con i risultati restituiti dal server
         this.movies = result.data.results;
         console.log("movies");
-        console.log(this.movies);
-        // se non metto un numero per scegliere un array mi restituisce undefined
-        // console.log(result.data.results[0].original_title);
+        console.log(this.movies);;
       })
     }
   }
