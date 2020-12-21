@@ -1,5 +1,4 @@
 // MILESTONE 2
-// BANDIERINE - Trasformiamo poi la stringa statica della lingua in una vera e propria bandiera della nazione corrispondente, gestendo il caso in cui non abbiamo la bandiera della nazione ritornata dall’API.
 // SERIE TV - Allarghiamo poi la ricerca anche alle serie tv. Con la stessa azione di ricerca dovremo prendere sia i film che corrispondono alla query, sia le serie tv, stando attenti ad avere alla fine dei valori simili (le serie e i film hanno campi nel JSON di risposta diversi, simili ma non sempre identici)
 
 var app = new Vue ({
@@ -16,22 +15,39 @@ var app = new Vue ({
   },
   methods: {
 
+    getTvShows: function() {
+      // API delle serie tv
+      axios
+      .get("https://api.themoviedb.org/3/search/tv?", {
+        params: {
+          api_key: "7cbf503fd8e48f699cd890609facde55",
+          query: this.userQuery,
+          language: "it-IT"
+        }
+      })
+      .then((result) => {
+        console.log("SERIE TV");
+        console.log(result.data.results);
+        // console.log(result.data.results.name);
+        this.movies = result.data.results;
+        this.getStars(result);
+      })
+    },
+
     getAPI: function() {
+      // API dei film
       axios
       .get("https://api.themoviedb.org/3/search/movie?", {
         params: {
           api_key: "7cbf503fd8e48f699cd890609facde55",
-          // senza this ritorna undefined
           query: this.userQuery,
           language: "it-IT"
         }
       })
       .then ((result) => {
-        console.log(result);
-        console.log(result.data.results);
         // riempio l'array utente con i risultati restituiti dal server
-        this.movies = result.data.results;
-        console.log("movies");
+        this.movies = this.movies + result.data.results;
+        console.log("movies & tv series");
         console.log(this.movies);
         // this.getStars(result);
         this.getStars(result);
