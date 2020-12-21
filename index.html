@@ -23,7 +23,8 @@
       <header>
         <h1>boolflix</h1>
         <div>
-          <input type="text" placeholder="Cerca" v-model="userQuery"  @keydown.enter="getAPI">
+          <input type="text" placeholder="Cerca" v-model="userQuery"  @keyup="getAPI">
+          <!-- ho usato il keyup perchè con il keydown non prende l'ultima lettera inserita -->
           <button type="button" @click="getAPI">
             <i class="fas fa-search"></i>
           </button>
@@ -83,8 +84,8 @@
           </div>
         </div>
 
-        <!-- questo dovrebbe essere mostra quando l'array è vuoto ma manda in crash la pagina -->
-        <!-- <h1 v-if="movies = []">Effettua una ricerca</h1> -->
+        <!-- questo h1 viene mostrato quando non è ancora stata effettuata nessuna ricerca -->
+        <h1 v-if="movies.length == 0">Effettua una ricerca</h1>
       </main>
       <!-- /main -->
     </div>
