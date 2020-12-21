@@ -65,10 +65,9 @@
             <!-- voto -->
             <div class="p_container">
               <p><span>Voto:</span>
-                {{ arrayStarsNumber[index] }}
-                <!-- <span v-for="n in 10">{{ n }} </span> -->
-                <i v-for="n in arrayStarsNumber[index]" class="fas fa-star"></i>
-                <i class="far fa-star"></i>
+                <!-- Nel primo v-for (quello dei movies) ho passato l'index perchè mi è utile in questo step per prelevare dall'array dei voti il numero di stelle corrispondenti al film -->
+                <i v-for="n in arrayStarsNumber[index]" class="fas fa-star"></i><i v-for="n in (5 - arrayStarsNumber[index])" class="far fa-star"></i>
+                <!-- le icone sono attaccate nell'html per evitare il fastidiosissimo spazietto nella pagina -->
               </p>
             </div>
 
