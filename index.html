@@ -23,7 +23,7 @@
       <header>
         <h1>boolflix</h1>
         <div>
-          <input type="text" placeholder="Cerca" v-model="userQuery"  @keyup="getAPI">
+          <input type="text" placeholder="Cerca" v-model="userQuery"  @keyup.enter="getAPI">
           <!-- ho usato il keyup perchè con il keydown non prende l'ultima lettera inserita -->
           <button type="button" @click="getAPI">
             <i class="fas fa-search"></i>
@@ -34,7 +34,7 @@
 
       <!-- main -->
       <main>
-        <div class="card" v-for="(movie) in movies">
+        <div class="card" v-for="(movie, index) in movies">
           <img v-if="movie.poster_path != null" :src="imgPrefix + movie.poster_path" :alt="movie.title">
           <!-- se non è presente la copertina, viene mostrata un'altra immagine tramite il v-if -->
           <img v-if="movie.poster_path == null" src="img/220x330.png" >
@@ -65,12 +65,10 @@
             <!-- voto -->
             <div class="p_container">
               <p><span>Voto:</span>
-                {{ movie.vote_average }}
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                {{ arrayVotes[index] }}
+                <!-- <span v-for="n in 10">{{ n }} </span> -->
+                <i v-for="n in arrayVotes[index]" class="fas fa-star"></i>
+                <i class="far fa-star"></i>
               </p>
             </div>
 

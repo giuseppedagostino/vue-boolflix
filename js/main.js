@@ -12,11 +12,7 @@ var app = new Vue ({
     movies: [],
     // prefisso percorso immagini
     imgPrefix: "https://image.tmdb.org/t/p/w220_and_h330_face/",
-    // variabile del voto singolo
-    singleVote: "",
-    // stars number
-    starsNumber: "",
-    // array valutazioni film
+    // salvo in un array le valutazioni dei film ricercati
     arrayVotes: [],
   },
   methods: {
@@ -64,17 +60,23 @@ var app = new Vue ({
     // }
 
     getVotes: function(result) {
+      // ad ogni ricerca l'array di voti deve essere reinizializzato a 0
+      this.arrayVotes = [];
+      var singleVote = "";
+      var starsNumber = "";
       for (var i = 0; i < this.movies.length; i++) {
         console.log(this.movies[i].vote_average);
         this.singleVote = this.movies[i].vote_average;
+        // converto il voto in numero di stelle
         this.starsNumber = Math.ceil((this.singleVote) / 2);
         // this.arrayVotes.push(this.singleVote);
+        // pusho il numero di stelle nell'array
         this.arrayVotes.push(this.starsNumber);
         console.log(this.starsNumber);
       }
       console.log(this.arrayVotes);
       console.log(this.arrayVotes.length);
-    }
+    },
 
   }
 });
