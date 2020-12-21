@@ -137,6 +137,11 @@ span {
   margin-right: 10px;
   font-weight: 600;
 }
+.language_span {
+  margin-right: 0;
+  font-weight: 300;
+  font-size: 14px;
+}
 .informations {
   position: absolute;
   top: 0;
@@ -150,12 +155,17 @@ span {
   opacity: 0;
   overflow-y: auto;
 }
+.informations img {
+  width: 25px;
+  height: auto;
+}
 .informations:hover {
   cursor: pointer;
   opacity: 1;
 }
 main p {
   font-size: 14px;
+  font-weight: 300;
 }
 p i {
   color: yellow;

@@ -58,7 +58,11 @@
             <!-- lingua -->
             <div class="p_container">
               <p><span>Lingua:</span>
-                {{ movie.original_language }}
+                <img v-if="movie.original_language == 'en' " src="img/UK.png" :alt="movie.original_language">
+                <img v-else-if="movie.original_language == 'it' " src="img/IT.png" :alt="movie.original_language">
+                <img v-else-if="movie.original_language == 'de' " src="img/DE.png" :alt="movie.original_language">
+                <img v-else-if="movie.original_language == 'fr' " src="img/FR.png" :alt="movie.original_language">
+                <span v-else="" class="language_span">{{ movie.original_language }}</span>
               </p>
             </div>
 
