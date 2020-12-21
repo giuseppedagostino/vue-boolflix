@@ -23,7 +23,7 @@
       <header>
         <h1>boolflix</h1>
         <div>
-          <input type="text" placeholder="Cerca" v-model="userQuery"  @keyup.enter="getAPI">
+          <input type="text" placeholder="Cerca" v-model="userQuery"  @keyup="getAPI">
           <!-- ho usato il keyup perchè con il keydown non prende l'ultima lettera inserita -->
           <button type="button" @click="getAPI">
             <i class="fas fa-search"></i>
@@ -65,9 +65,9 @@
             <!-- voto -->
             <div class="p_container">
               <p><span>Voto:</span>
-                {{ arrayVotes[index] }}
+                {{ arrayStarsNumber[index] }}
                 <!-- <span v-for="n in 10">{{ n }} </span> -->
-                <i v-for="n in arrayVotes[index]" class="fas fa-star"></i>
+                <i v-for="n in arrayStarsNumber[index]" class="fas fa-star"></i>
                 <i class="far fa-star"></i>
               </p>
             </div>

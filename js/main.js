@@ -13,7 +13,7 @@ var app = new Vue ({
     // prefisso percorso immagini
     imgPrefix: "https://image.tmdb.org/t/p/w220_and_h330_face/",
     // salvo in un array le valutazioni dei film ricercati
-    arrayVotes: [],
+    arrayStarsNumber: [],
   },
   methods: {
 
@@ -35,47 +35,24 @@ var app = new Vue ({
         console.log("movies");
         console.log(this.movies);
         // this.getStars(result);
-        this.getVotes(result);
+        this.getStars(result);
       })
     },
 
-    // getStars: function(result) {
-    //   console.log("getStars");
-    //   for (var i = 0; i < this.movies.length; i++) {
-    //     this.arrayVotes += this.movies[i].vote_average;
-    //   }
-    //   console.log(this.arrayVotes);
-    //   console.log(this.arrayVotes[0]);
-    // },
-
-    // backup
-    // getVotes: function(result) {
-    //   for (var i = 0; i < this.movies.length; i++) {
-    //     console.log(this.movies[i].vote_average);
-    //     this.singleVote = this.movies[i].vote_average;
-    //     this.arrayVotes.push(this.singleVote);
-    //   }
-    //   console.log(this.arrayVotes);
-    //   console.log(this.arrayVotes.length);
-    // }
-
-    getVotes: function(result) {
+    getStars: function(result) {
       // ad ogni ricerca l'array di voti deve essere reinizializzato a 0
-      this.arrayVotes = [];
+      this.arrayStarsNumber = [];
       var singleVote = "";
       var starsNumber = "";
       for (var i = 0; i < this.movies.length; i++) {
-        console.log(this.movies[i].vote_average);
         this.singleVote = this.movies[i].vote_average;
         // converto il voto in numero di stelle
         this.starsNumber = Math.ceil((this.singleVote) / 2);
-        // this.arrayVotes.push(this.singleVote);
         // pusho il numero di stelle nell'array
-        this.arrayVotes.push(this.starsNumber);
-        console.log(this.starsNumber);
+        this.arrayStarsNumber.push(this.starsNumber);
       }
-      console.log(this.arrayVotes);
-      console.log(this.arrayVotes.length);
+      console.log("arrayStarsNumber");
+      console.log(this.arrayStarsNumber);
     },
 
   }
