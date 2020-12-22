@@ -9,13 +9,13 @@ var app = new Vue ({
     allAPIs: [],
     imgPrefix: "https://image.tmdb.org/t/p/w220_and_h330_face/",
     // salvo in un array le valutazioni dei film ricercati
-    arrayStarsNumber: [],
+    // arrayStarsNumber: [],
   },
   methods: {
 
     // chiama le serie tv all'interno di getAPI
     getTvShows: function() {
-      console.log('query: ' +  this.userQuery);
+      // console.log('query: ' +  this.userQuery);
       axios
       .get("https://api.themoviedb.org/3/search/tv?", {
         params: {
@@ -29,10 +29,11 @@ var app = new Vue ({
         this.tvShows = result.data.results;
         console.log("SERIE TV");
         console.log(result.data.results);
-        this.getStars(result);
-        //this.allAPIs = [...this.tvShows, ...this.movies];
+        this.allAPIs = [...this.tvShows, ...this.movies];
         console.log("ALL");
-        //console.log(this.allAPIs);
+        console.log(this.allAPIs);
+        // get stars non faceva funzionare lo spread perchè ciclava sull'array sbagliato (movies) però ora funziona sia con che senza il parametro result. Perchè?
+        this.getStars(result);
       })
     },
 
@@ -50,7 +51,6 @@ var app = new Vue ({
         this.movies = result.data.results;
         console.log("FILM");
         console.log(this.movies);
-        this.getStars(result);
         this.getTvShows();
       })
     },
@@ -60,15 +60,13 @@ var app = new Vue ({
       this.arrayStarsNumber = [];
       var singleVote = "";
       var starsNumber = "";
-      for (var i = 0; i < this.movies.length; i++) {
-        singleVote = this.movies[i].vote_average;
+      for (var i = 0; i < this.allAPIs.length; i++) {
+        singleVote = this.allAPIs[i].vote_average;
         // converto il voto in numero di stelle
         starsNumber = Math.ceil((singleVote) / 2);
         // pusho il numero di stelle nell'array
         this.arrayStarsNumber.push(starsNumber);
       }
-      // console.log("arrayStarsNumber");
-      // console.log(this.arrayStarsNumber);
     },
 
   }
