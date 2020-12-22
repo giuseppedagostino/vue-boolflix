@@ -23,9 +23,9 @@
       <header>
         <h1>boolflix</h1>
         <div>
-          <input type="text" placeholder="Cerca" v-model="userQuery"  @keydown.enter="getAPI(); getTvShows()">
+          <input type="text" placeholder="Cerca" v-model="userQuery"  @keydown.enter="getAPI">
           <!-- ho usato il keyup perchè con il keydown non prende l'ultima lettera inserita -->
-          <button type="button" @click="getAPI(); getTvShows()">
+          <button type="button" @click="getAPI">
             <i class="fas fa-search"></i>
           </button>
         </div>

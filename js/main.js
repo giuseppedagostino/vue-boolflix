@@ -1,13 +1,14 @@
-// MILESTONE 2
-// SERIE TV - Allarghiamo poi la ricerca anche alle serie tv. Con la stessa azione di ricerca dovremo prendere sia i film che corrispondono alla query, sia le serie tv, stando attenti ad avere alla fine dei valori simili (le serie e i film hanno campi nel JSON di risposta diversi, simili ma non sempre identici)
-
 var app = new Vue ({
   el: "#root",
   data: {
     // prendo il valore inserito dall'utente e lo utilizzerò come query per la chiamata server
     userQuery: "",
-    // salvo in un array a parte la ricerca appena effettuata
+    // salvo in un array la ricerca dei film
     movies: [],
+    // salvo in un array la ricerca delle serie tv
+    tvShows: [],
+    // array contentente tutti i risultati già mescolati
+    // allAPI: [],
     // prefisso percorso immagini
     imgPrefix: "https://image.tmdb.org/t/p/w220_and_h330_face/",
     // salvo in un array le valutazioni dei film ricercati
@@ -15,8 +16,8 @@ var app = new Vue ({
   },
   methods: {
 
+    // chiama le serie tv all'interno di getAPI
     getTvShows: function() {
-      // API delle serie tv
       axios
       .get("https://api.themoviedb.org/3/search/tv?", {
         params: {
@@ -28,14 +29,12 @@ var app = new Vue ({
       .then((result) => {
         console.log("SERIE TV");
         console.log(result.data.results);
-        // console.log(result.data.results.name);
-        this.movies = result.data.results;
+        this.tvShows = result.data.results;
         this.getStars(result);
       })
     },
 
     getAPI: function() {
-      // API dei film
       axios
       .get("https://api.themoviedb.org/3/search/movie?", {
         params: {
@@ -46,10 +45,10 @@ var app = new Vue ({
       })
       .then ((result) => {
         // riempio l'array utente con i risultati restituiti dal server
-        this.movies = this.movies + result.data.results;
-        console.log("movies & tv series");
+        this.movies = result.data.results;
+        this.getTvShows();
+        console.log("FILM");
         console.log(this.movies);
-        // this.getStars(result);
         this.getStars(result);
       })
     },
@@ -66,8 +65,8 @@ var app = new Vue ({
         // pusho il numero di stelle nell'array
         this.arrayStarsNumber.push(starsNumber);
       }
-      console.log("arrayStarsNumber");
-      console.log(this.arrayStarsNumber);
+      // console.log("arrayStarsNumber");
+      // console.log(this.arrayStarsNumber);
     },
 
   }
