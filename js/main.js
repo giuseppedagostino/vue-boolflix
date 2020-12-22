@@ -3,13 +3,10 @@ var app = new Vue ({
   data: {
     // prendo il valore inserito dall'utente e lo utilizzerò come query per la chiamata server
     userQuery: "",
-    // salvo in un array la ricerca dei film
     movies: [],
-    // salvo in un array la ricerca delle serie tv
     tvShows: [],
-    // array contentente tutti i risultati già mescolati
-    // allAPI: [],
-    // prefisso percorso immagini
+    // array contentente tutti i risultati mescolati
+    allAPIs: [],
     imgPrefix: "https://image.tmdb.org/t/p/w220_and_h330_face/",
     // salvo in un array le valutazioni dei film ricercati
     arrayStarsNumber: [],
@@ -45,12 +42,20 @@ var app = new Vue ({
       })
       .then ((result) => {
         // riempio l'array utente con i risultati restituiti dal server
-        this.movies = result.data.results;
         this.getTvShows();
+        this.movies = result.data.results;
         console.log("FILM");
         console.log(this.movies);
         this.getStars(result);
+        this.getDefinitiveArray();
       })
+    },
+
+    getDefinitiveArray: function() {
+      // unisco i due array con l'operatore spread
+      this.allAPIs = [...this.tvShows, ...this.movies];
+      console.log("ALL APIS");
+      console.log(this.allAPIs);
     },
 
     getStars: function(result) {

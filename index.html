@@ -34,42 +34,42 @@
 
       <!-- main -->
       <main>
-        <div class="card" v-for="(movie, index) in movies">
-          <img v-if="movie.poster_path != null" :src="imgPrefix + movie.poster_path" :alt="movie.title">
+        <div class="card" v-for="(api, index) in allAPIs">
+          <img v-if="api.poster_path != null" :src="imgPrefix + api.poster_path" :alt="api.title">
           <!-- se non è presente la copertina, viene mostrata un'altra immagine tramite il v-if -->
-          <img v-if="movie.poster_path == null" src="img/220x330.png" >
+          <img v-if="api.poster_path == null" src="img/220x330.png" >
 
           <!-- titolo -->
           <div class="informations">
             <div class="p_container">
               <p><span>Titolo:</span>
-                {{ movie.title }}
+                {{ api.title }}
               </p>
             </div>
 
             <!-- titolo originale -->
             <!-- questo elemnto è visibile solo se il titolo è diverso da quello originale -->
-            <div v-if="movie.title != movie.original_title" class="p_container">
+            <div v-if="api.title != api.original_title" class="p_container">
               <p><span>Titolo originale:</span>
-                {{ movie.original_title }}
+                {{ api.original_title }}
               </p>
             </div>
 
             <!-- lingua -->
             <div class="p_container">
               <p><span>Lingua:</span>
-                <img v-if="movie.original_language == 'en' " src="img/UK.png" :alt="movie.original_language">
-                <img v-else-if="movie.original_language == 'it' " src="img/IT.png" :alt="movie.original_language">
-                <img v-else-if="movie.original_language == 'de' " src="img/DE.png" :alt="movie.original_language">
-                <img v-else-if="movie.original_language == 'fr' " src="img/FR.png" :alt="movie.original_language">
-                <span v-else="" class="language_span">{{ movie.original_language }}</span>
+                <img v-if="api.original_language == 'en' " src="img/UK.png" :alt="api.original_language">
+                <img v-else-if="api.original_language == 'it' " src="img/IT.png" :alt="api.original_language">
+                <img v-else-if="api.original_language == 'de' " src="img/DE.png" :alt="api.original_language">
+                <img v-else-if="api.original_language == 'fr' " src="img/FR.png" :alt="api.original_language">
+                <span v-else="" class="language_span">{{ api.original_language }}</span>
               </p>
             </div>
 
             <!-- voto -->
             <div class="p_container">
               <p><span>Voto:</span>
-                <!-- Nel primo v-for (quello dei movies) ho passato l'index perchè mi è utile in questo step per prelevare dall'array dei voti il numero di stelle corrispondenti al film -->
+                <!-- Nel primo v-for (quello dei allAPIs) ho passato l'index perchè mi è utile in questo step per prelevare dall'array dei voti il numero di stelle corrispondenti al film -->
                 <i v-for="n in arrayStarsNumber[index]" class="fas fa-star"></i><i v-for="n in (5 - arrayStarsNumber[index])" class="far fa-star"></i>
                 <!-- le icone sono attaccate nell'html per evitare il fastidiosissimo spazietto nella pagina -->
               </p>
@@ -77,9 +77,9 @@
 
             <!-- trama -->
             <div class="p_container">
-              <p><span v-if="movie.overview != ''">Trama:</span>
-                <p class="missing" v-if="movie.overview == ''">Purtroppo non è presente una descrizione in italiano per questo film.</p>
-                {{ movie.overview }}
+              <p><span v-if="api.overview != ''">Trama:</span>
+                <p class="missing" v-if="api.overview == ''">Purtroppo non è presente una descrizione in italiano per questo film.</p>
+                {{ api.overview }}
               </p>
             </div>
 
@@ -87,7 +87,7 @@
         </div>
 
         <!-- questo h1 viene mostrato quando non è ancora stata effettuata nessuna ricerca -->
-        <h1 v-if="movies.length == 0">Effettua una ricerca</h1>
+        <h1 v-if="allAPIs.length == 0">Effettua una ricerca</h1>
       </main>
       <!-- /main -->
     </div>
