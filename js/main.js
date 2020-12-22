@@ -15,6 +15,7 @@ var app = new Vue ({
 
     // chiama le serie tv all'interno di getAPI
     getTvShows: function() {
+      console.log('query: ' +  this.userQuery);
       axios
       .get("https://api.themoviedb.org/3/search/tv?", {
         params: {
@@ -24,14 +25,18 @@ var app = new Vue ({
         }
       })
       .then((result) => {
+
+        this.tvShows = result.data.results;
         console.log("SERIE TV");
         console.log(result.data.results);
-        this.tvShows = result.data.results;
         this.getStars(result);
+        //this.allAPIs = [...this.tvShows, ...this.movies];
+        console.log("ALL");
+        //console.log(this.allAPIs);
       })
     },
 
-    getAPI: function() {
+    getMovies: function() {
       axios
       .get("https://api.themoviedb.org/3/search/movie?", {
         params: {
@@ -42,20 +47,12 @@ var app = new Vue ({
       })
       .then ((result) => {
         // riempio l'array utente con i risultati restituiti dal server
-        this.getTvShows();
         this.movies = result.data.results;
         console.log("FILM");
         console.log(this.movies);
         this.getStars(result);
-        this.getDefinitiveArray();
+        this.getTvShows();
       })
-    },
-
-    getDefinitiveArray: function() {
-      // unisco i due array con l'operatore spread
-      this.allAPIs = [...this.tvShows, ...this.movies];
-      console.log("ALL APIS");
-      console.log(this.allAPIs);
     },
 
     getStars: function(result) {
