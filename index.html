@@ -23,7 +23,7 @@
       <header>
         <h1>boolflix</h1>
         <div>
-          <input type="text" placeholder="Cerca" v-model="userQuery"  @keydown.enter="getMovies">
+          <input type="text" placeholder="Cerca" v-model="userQuery"  @keyup="getMovies">
           <!-- ho usato il keyup perchè con il keydown non prende l'ultima lettera inserita -->
           <button type="button" @click="getMovies">
             <i class="fas fa-search"></i>
@@ -40,12 +40,6 @@
           <img v-if="api.poster_path == null" src="img/220x330.png" >
 
           <div class="informations">
-
-            <div class="p_container">
-              <p><span>Popolarità:</span>
-                {{ api.popularity }}
-              </p>
-            </div>
 
             <!-- titolo -->
             <div class="p_container">
