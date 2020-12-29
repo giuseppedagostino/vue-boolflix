@@ -9,7 +9,7 @@ var app = new Vue ({
     allAPIs: [],
     imgPrefix: "https://image.tmdb.org/t/p/w220_and_h330_face/",
     // salvo in un array le valutazioni dei film ricercati
-    // arrayStarsNumber: [],
+    arrayStarsNumber: [],
   },
   methods: {
 
@@ -29,9 +29,12 @@ var app = new Vue ({
         this.tvShows = result.data.results;
         console.log("SERIE TV");
         console.log(result.data.results);
+        // unione dei due array, va fatto all'interno di questa chiamata perchè sono asincrone.
         this.allAPIs = [...this.tvShows, ...this.movies];
         console.log("ALL");
         console.log(this.allAPIs);
+        // Riordino l'array in base alla popolarità, sort vuole all'interno una funzione anonima che accetta due parametri (a, b). Riconoscerà da sola se si tratta di numeri, stringhe, oggetti, ecc. Infatti, richiamare una funzione definita esternamente non funziona.
+        this.allAPIs.sort(function(a, b) {return b.popularity - a.popularity});
         // get stars non faceva funzionare lo spread perchè ciclava sull'array sbagliato (movies) però ora funziona sia con che senza il parametro result. Perchè?
         this.getStars(result);
       })

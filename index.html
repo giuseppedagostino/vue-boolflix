@@ -39,11 +39,19 @@
           <!-- se non è presente la copertina, viene mostrata un'altra immagine tramite il v-if -->
           <img v-if="api.poster_path == null" src="img/220x330.png" >
 
-          <!-- titolo -->
           <div class="informations">
+
+            <div class="p_container">
+              <p><span>Popolarità:</span>
+                {{ api.popularity }}
+              </p>
+            </div>
+
+            <!-- titolo -->
             <div class="p_container">
               <p><span>Titolo:</span>
                 {{ api.title }}
+                {{ api.name }}
               </p>
             </div>
 
@@ -52,6 +60,7 @@
             <div v-if="api.title != api.original_title" class="p_container">
               <p><span>Titolo originale:</span>
                 {{ api.original_title }}
+                {{ api.original_name }}
               </p>
             </div>
 
