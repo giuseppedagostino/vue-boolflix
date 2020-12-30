@@ -23,6 +23,16 @@ body {
   border-radius: 7.5px;
 }
 
+/* gestione immagini di sfondo */
+#root {
+  overflow: hidden;
+}
+#root > img {
+  position: absolute;
+  top: 80px;
+  width: 100%;
+}
+
 /* HEADER */
 header {
   display: flex;
