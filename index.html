@@ -32,7 +32,7 @@
       <!-- /header -->
 
       <!-- main -->
-      <main>
+      <main :style="{ backgroundImage: 'url(img/' + imageName + '.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }">
         <div class="card" v-for="(api, index) in allAPIs">
           <img v-if="api.poster_path != null" :src="imgPrefix + api.poster_path" :alt="api.title">
           <!-- se non è presente la copertina, viene mostrata un'altra immagine tramite il v-if -->
@@ -90,9 +90,9 @@
 
         <!-- questo h1 viene mostrato quando non è ancora stata effettuata nessuna ricerca -->
         <!-- <h1 v-if="allAPIs.length == 0">Effettua una ricerca</h1> -->
+        <!-- <img :src="arrayImages[imageIndex]" v-if="allAPIs.length == 0"> -->
       </main>
       <!-- /main -->
-      <img :src="arrayImages[imageIndex]" v-if="allAPIs.length == 0">
     </div>
 
     <!-- js -->

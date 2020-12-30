@@ -23,16 +23,6 @@ body {
   border-radius: 7.5px;
 }
 
-/* gestione immagini di sfondo */
-#root {
-  overflow: hidden;
-}
-#root > img {
-  position: absolute;
-  top: 80px;
-  width: 100%;
-}
-
 /* HEADER */
 header {
   display: flex;
@@ -95,6 +85,7 @@ main {
   min-height: calc(100vh - 80px);
   padding: 40px;
   background-color: #303030;
+  overflow: hidden;
 }
 main h1 {
   position: absolute;

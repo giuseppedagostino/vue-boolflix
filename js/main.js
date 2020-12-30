@@ -12,7 +12,8 @@ var app = new Vue ({
     arrayStarsNumber: [],
     // array di immagini per lo sfondo
     imageIndex: 0,
-    arrayImages: ["img/avatarM.jpg","img/interstellarM.jpg","img/firstmanM.jpg"],
+    arrayImages: ["img/avatar.jpg","img/interstellar.jpg","img/firstman.jpg","img/dunkirk.jpeg"],
+    imageName: "avatar",
   },
 
   // cambio sfondo automatico senza ricerca
