@@ -23,7 +23,7 @@
       <header>
         <h1>boolflix</h1>
         <div>
-          <input type="text" placeholder="Cerca" v-model="userQuery"  @keydown.enter="getMovies">
+          <input type="text" placeholder="Cerca" v-model="userQuery"  @keyup="getMovies">
           <button type="button" @click="getMovies">
             <i class="fas fa-search"></i>
           </button>
@@ -32,7 +32,8 @@
       <!-- /header -->
 
       <!-- main -->
-      <main :style="{ backgroundImage: 'url(img/' + imageName + '.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }">
+      <!-- :style="{ backgroundImage: 'url(img/' + imageName + '.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }" -->
+      <main>
         <div class="card" v-for="(api, index) in allAPIs">
           <img v-if="api.poster_path != null" :src="imgPrefix + api.poster_path" :alt="api.title">
           <!-- se non è presente la copertina, viene mostrata un'altra immagine tramite il v-if -->
@@ -89,8 +90,7 @@
         </div>
 
         <!-- questo h1 viene mostrato quando non è ancora stata effettuata nessuna ricerca -->
-        <!-- <h1 v-if="allAPIs.length == 0">Effettua una ricerca</h1> -->
-        <!-- <img :src="arrayImages[imageIndex]" v-if="allAPIs.length == 0"> -->
+        <h1 v-if="allAPIs.length == 0">Effettua una ricerca</h1>
       </main>
       <!-- /main -->
     </div>

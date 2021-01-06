@@ -11,20 +11,20 @@ var app = new Vue ({
     // salvo in un array le valutazioni dei film ricercati
     arrayStarsNumber: [],
     // array di immagini per lo sfondo
-    imageIndex: 0,
-    arrayImages: ["img/avatar.jpg","img/interstellar.jpg","img/firstman.jpg","img/dunkirk.jpeg"],
-    imageName: "avatar",
+    // imageIndex: 0,
+    // arrayImages: ["img/avatar.jpg","img/interstellar.jpg","img/firstman.jpg","img/dunkirk.jpeg"],
+    // imageName: "avatar",
   },
 
   // cambio sfondo automatico senza ricerca
-  created: function() {
-    setInterval(() => {
-      this.imageIndex++;
-      if (this.imageIndex == this.arrayImages.length) {
-        this.imageIndex = 0;
-      }
-    }, 3000);
-  },
+  // created: function() {
+  //   setInterval(() => {
+  //     this.imageIndex++;
+  //     if (this.imageIndex == this.arrayImages.length) {
+  //       this.imageIndex = 0;
+  //     }
+  //   }, 3000);
+  // },
 
   methods: {
 
@@ -55,25 +55,21 @@ var app = new Vue ({
     },
 
     getMovies: function() {
-      if (this.userQuery != "" && this.userQuery != " ") {
-        axios
-        .get("https://api.themoviedb.org/3/search/movie?", {
-          params: {
-            api_key: "7cbf503fd8e48f699cd890609facde55",
-            query: this.userQuery,
-            language: "it-IT"
-          }
-        })
-        .then ((result) => {
-          // riempio l'array utente con i risultati restituiti dal server
-          this.movies = result.data.results;
-          console.log("FILM");
-          console.log(this.movies);
-          this.getTvShows();
-        })
-      } else {
-        alert("Compila il campo di ricerca correttamente.")
-      }
+      axios
+      .get("https://api.themoviedb.org/3/search/movie?", {
+        params: {
+          api_key: "7cbf503fd8e48f699cd890609facde55",
+          query: this.userQuery,
+          language: "it-IT"
+        }
+      })
+      .then ((result) => {
+        // riempio l'array utente con i risultati restituiti dal server
+        this.movies = result.data.results;
+        console.log("FILM");
+        console.log(this.movies);
+        this.getTvShows();
+      })
     },
 
     getStars: function(result) {
