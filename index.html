@@ -23,6 +23,14 @@
       <header>
         <h1>boolflix</h1>
         <div>
+
+          <!-- selezione del genere -->
+          <select id="genres">
+            <option value="">Tutti i generi</option>
+            <option v-for="(genre) in genres">{{ genre.name }}</option>
+          </select>
+
+          <!-- input di ricerca -->
           <input type="text" placeholder="Cerca" v-model="userQuery"  @keyup="getMovies">
           <button type="button" @click="getMovies">
             <i class="fas fa-search"></i>
