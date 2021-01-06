@@ -13,22 +13,33 @@ var app = new Vue ({
     imgPrefix: "https://image.tmdb.org/t/p/w220_and_h330_face/",
     // salvo in un array le valutazioni dei film ricercati
     arrayStarsNumber: [],
-    // array di immagini per lo sfondo
-    // imageIndex: 0,
-    // arrayImages: ["img/avatar.jpg","img/interstellar.jpg","img/firstman.jpg","img/dunkirk.jpeg"],
-    // imageName: "avatar",
     genres: [],
+    // array di immagini per lo sfondo
+    // arrayImages: ["avatar","interstellar","firstman","dunkirk"],
+    arrayImages: [
+      {name: "avatar"},
+      {name: "interstellar"},
+      {name: "starwars"},
+      {name: "firstman"},
+      {name: "theboys"},
+      {name: "dunkirk"},
+      {name: "django"},
+    ],
+    imageIndex: 0,
+    imageName: "avatar",
   },
 
   // cambio sfondo automatico senza ricerca
-  // created: function() {
-  //   setInterval(() => {
-  //     this.imageIndex++;
-  //     if (this.imageIndex == this.arrayImages.length) {
-  //       this.imageIndex = 0;
-  //     }
-  //   }, 3000);
-  // },
+  mounted: function() {
+    setInterval(() => {
+      this.imageIndex++;
+      // console.log(this.imageIndex + " " + this.imageName);
+      if (this.imageIndex == this.arrayImages.length) {
+        this.imageIndex = 0;
+      }
+      this.imageName = this.arrayImages[this.imageIndex].name;
+    }, 5000);
+  },
 
   // la primissima chiamata crea l'array di generi
   created: function() {
@@ -40,7 +51,6 @@ var app = new Vue ({
       }
     })
     .then((result) => {
-      console.log(result);
       this.genres = result.data.genres;
       console.log(this.genres);
     })
@@ -105,6 +115,8 @@ var app = new Vue ({
         this.arrayStarsNumber.push(starsNumber);
       }
     },
+
+    filterGenres: function() {}
 
   }
 });

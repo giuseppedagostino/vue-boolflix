@@ -27,7 +27,9 @@
           <!-- selezione del genere -->
           <select id="genres">
             <option value="">Tutti i generi</option>
-            <option v-for="(genre) in genres">{{ genre.name }}</option>
+            <option v-for="(genre) in genres"
+            @click="filterGenres">{{ genre.name }} {{ genre.id }}
+            </option>
           </select>
 
           <!-- input di ricerca -->
@@ -41,7 +43,7 @@
 
       <!-- main -->
       <!-- :style="{ backgroundImage: 'url(img/' + imageName + '.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }" -->
-      <main>
+      <main :style="{ backgroundImage: 'url(img/' + imageName + '.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }">
         <div class="card" v-for="(api, index) in allAPIs">
           <img v-if="api.poster_path != null" :src="imgPrefix + api.poster_path" :alt="api.title">
           <!-- se non è presente la copertina, viene mostrata un'altra immagine tramite il v-if -->
@@ -98,7 +100,7 @@
         </div>
 
         <!-- questo h1 viene mostrato quando non è ancora stata effettuata nessuna ricerca -->
-        <h1 v-if="allAPIs.length == 0">Effettua una ricerca</h1>
+        <!-- <h1 v-if="allAPIs.length == 0">Effettua una ricerca</h1> -->
       </main>
       <!-- /main -->
     </div>
