@@ -1,3 +1,6 @@
+// MILESTONE 5
+// Creare una lista di generi richiedendo quelli disponibili all'API e creare dei filtri con i generi tv e movie per mostrare/nascondere le schede ottenute con la ricerca.
+
 var app = new Vue ({
   el: "#root",
   data: {
@@ -14,6 +17,7 @@ var app = new Vue ({
     // imageIndex: 0,
     // arrayImages: ["img/avatar.jpg","img/interstellar.jpg","img/firstman.jpg","img/dunkirk.jpeg"],
     // imageName: "avatar",
+    genres: [],
   },
 
   // cambio sfondo automatico senza ricerca
@@ -25,6 +29,22 @@ var app = new Vue ({
   //     }
   //   }, 3000);
   // },
+
+  // la primissima chiamata crea l'array di generi
+  created: function() {
+    axios
+    .get("https://api.themoviedb.org/3/genre/movie/list", {
+      params: {
+        api_key: "7cbf503fd8e48f699cd890609facde55",
+        language: "it-IT"
+      }
+    })
+    .then((result) => {
+      console.log(result);
+      this.genres = result.data.genres;
+      console.log(this.genres);
+    })
+  },
 
   methods: {
 
