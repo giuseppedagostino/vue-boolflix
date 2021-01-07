@@ -43,7 +43,11 @@
 
       <!-- main -->
       <!-- :style="{ backgroundImage: 'url(img/' + imageName + '.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }" -->
-      <main :style="{ backgroundImage: 'url(img/' + imageName + '.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }">
+      <main>
+
+        <!-- sfondo animato -->
+        <div id="wallpaper" :style="{ backgroundImage: 'url(img/' + imageName + '.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }" v-if="allAPIs.length == 0"></div>
+
         <div class="card" v-for="(api, index) in allAPIs">
           <img v-if="api.poster_path != null" :src="imgPrefix + api.poster_path" :alt="api.title">
           <!-- se non è presente la copertina, viene mostrata un'altra immagine tramite il v-if -->

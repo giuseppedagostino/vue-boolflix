@@ -38,7 +38,7 @@ var app = new Vue ({
         this.imageIndex = 0;
       }
       this.imageName = this.arrayImages[this.imageIndex].name;
-    }, 5000);
+    }, 4000);
   },
 
   // la primissima chiamata crea l'array di generi
